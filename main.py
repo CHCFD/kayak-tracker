@@ -57,7 +57,7 @@ while cap.isOpened():
     # Draw BoundingBox
     x,y,w,h = cv.boundingRect(np.asarray(arr))
     cv.rectangle(frame1,(x,y),(x+w,y+h),(0,255,0),3)
-    cv.putText(frame1, 'KAYAK', (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 1, (36,255,12), 2)
+    cv.putText(frame1, 'KAYAK', (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 2.5, (36,255,12), 5)
     
     
     # Finding LifeJacket
@@ -72,13 +72,15 @@ while cap.isOpened():
         blue_area = max(croped, key=cv.contourArea)
         (xg,yg,wg,hg) = cv.boundingRect(blue_area)
         cv.rectangle(frame1,(xg,yg),(xg+wg, yg+hg),(0,0,255),2)
-        cv.putText(frame1, 'LIFEJACKET', (xg, yg-10), cv.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2) 
+        cv.putText(frame1, 'LIFEJACKET', (xg, yg-10), cv.FONT_HERSHEY_SIMPLEX, 2.5, (0,0,255),  5) 
         
     # Resizing image
     frame1 = ResizeWithAspectRatio(frame1, width = 1280)
      
     cv.imshow('IMG', frame1)
-    if cv.waitKey(85)==27:
+
+
+    if cv.waitKey(40)==27:
         break
 
 cv.destroyAllWindows()
